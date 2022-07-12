@@ -7,7 +7,11 @@
 html {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.clearAll{
+  background-color: red;
+  color: white;
+  border-color: white;
+}
 .calculator {
   display: grid;
   margin:20px;
