@@ -18,20 +18,20 @@ function App() {
 
   const [first, setFirst] = useState(0);
   const setNumberFirst = (number) => {
-
+    console.log('first', firstCollect);
     if (first === 0 && number === '.') {
       setFirst(Number('0.'));
-      console.log('first', first);
     }
     if (first === 0 && number === 0) {
-      setFirst(0);
+      if(!checkFloat.includes(firstCollect)){
+        setFirst(0);
+      }
+      
 
     } else {
       firstCollect += number;
-      setFirst(Number(firstCollect));
+      setFirst(parseFloat(firstCollect));
     }
-
-
 
   }
 
@@ -52,11 +52,13 @@ function App() {
       setSecond(Number('0.'));
     }
     if (second === 0 && number === 0) {
-      setSecond(0);
+      if(!checkFloat.includes(secondCollect)){
+        setSecond(0);
+      }
 
     } else {
       secondCollect += number;
-      setSecond(Number(secondCollect));
+      setSecond(parseFloat(secondCollect));
     }
   }
   const clearSecond = () => {
