@@ -22,16 +22,16 @@ function App() {
     if (first === 0 && number === '.') {
       setFirst(Number('0.'));
     }
-    if (first === 0 && number === 0) {
+    else if (first === 0 && number === 0) {
       if(!checkFloat.includes(firstCollect)){
         setFirst(0);
       }
       
 
-    } else {
+    } 
       firstCollect += number;
-      setFirst(parseFloat(firstCollect));
-    }
+      setFirst(firstCollect);
+    
 
   }
 
@@ -51,15 +51,15 @@ function App() {
     if (second === 0 && number === '.') {
       setSecond(Number('0.'));
     }
-    if (second === 0 && number === 0) {
+    else if (second === 0 && number === 0) {
       if(!checkFloat.includes(secondCollect)){
         setSecond(0);
       }
 
-    } else {
+    } 
       secondCollect += number;
-      setSecond(parseFloat(secondCollect));
-    }
+      setSecond(secondCollect);
+    
   }
   const clearSecond = () => {
     secondCollect = "";
@@ -68,6 +68,8 @@ function App() {
 
   let [total, setTotal] = useState(0);
   const getTotal = (first, second) => {
+    first = parseFloat(first);
+    second=parseFloat(second);
     if (opt === '+') {
       total = first + second;
     } else if (opt === '-') {
