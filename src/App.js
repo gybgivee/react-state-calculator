@@ -6,70 +6,46 @@ import SecondComplement from "./components/SecondComplement";
 import Result from "./components/Result";
 import { useState } from 'react'
 
-let firstCollect = "";
+let firstCollect = "0";
 let secondCollect = "";
-const checkFloat = ['.'];
 function App() {
-  /*
-   <FirstComplement />
-         <Operator/>
-         <SecondComplement />
-         <Result /> */
 
   const [first, setFirst] = useState(0);
-  const setNumberFirst = (number) => {
-    console.log('first', firstCollect);
-    if (first === 0 && number === '.') {
-      setFirst(Number('0.'));
-    }
-    else if (first === 0 && number === 0) {
-      if(!checkFloat.includes(firstCollect)){
-        setFirst(0);
-      }
-      
-
-    } 
-      firstCollect += number;
-      setFirst(firstCollect);
-    
-
-  }
-
-
-  const clearFirst = () => {
-    setFirst(0);
-    firstCollect = "";
-  };
-  const [opt, setOpt] = useState(0);
-  const setOperator = (operator) => {
-
-    setOpt(operator);
-
-  }
+  const [opt, setOperator] = useState(0);
   const [second, setSecond] = useState(0);
-  const setNumberSecond = (number) => {
-    if (second === 0 && number === '.') {
-      setSecond(Number('0.'));
-    }
-    else if (second === 0 && number === 0) {
-      if(!checkFloat.includes(secondCollect)){
-        setSecond(0);
-      }
+  let [total, setTotal] = useState(0);
 
-    } 
+  const setNumberFirst = (number) => {
+    let isFloat = true;
+    console.log('number: ' + number);
+    console.log('first: ' + first);
+    if (first == 0 && number == 0 && !first.includes('.')) {
+      setFirst(0);
+      isFloat = false;
+
+    }
+    if (isFloat) {
+      firstCollect += number;
+      console.log('firstCollect: ' + firstCollect);
+      setFirst(firstCollect);
+      console.log(first);
+    }
+  }
+  const setNumberSecond = (number) => {
+    let isFloat = true;
+    if (second == 0 && number == 0 && !second.includes('.')) {
+      setSecond(0);
+      isFloat = false;
+    }
+    if (isFloat) {
       secondCollect += number;
       setSecond(secondCollect);
-    
+    }
   }
-  const clearSecond = () => {
-    secondCollect = "";
-    setSecond(0)
-  };
 
-  let [total, setTotal] = useState(0);
   const getTotal = (first, second) => {
     first = parseFloat(first);
-    second=parseFloat(second);
+    second = parseFloat(second);
     if (opt === '+') {
       total = first + second;
     } else if (opt === '-') {
@@ -82,7 +58,14 @@ function App() {
     setTotal(total);
 
   }
-
+  const clearSecond = () => {
+    secondCollect = "";
+    setSecond(0)
+  };
+  const clearFirst = () => {
+    setFirst(0);
+    firstCollect = "";
+  };
   const clearAll = () => {
     firstCollect = "";
     secondCollect = "";
