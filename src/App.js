@@ -1,17 +1,12 @@
 import "./styles/App.css"
-import "./components/FirstComplement"
-import FirstComplement from "./components/FirstComplement";
-import Operator from "./components/Operator";
-import SecondComplement from "./components/SecondComplement";
-import Result from "./components/Result";
 import { useState } from 'react'
 
-let firstCollect = "0";
+let firstCollect = "";
 let secondCollect = "";
 function App() {
 
   const [first, setFirst] = useState(0);
-  const [opt, setOperator] = useState(0);
+  const [opt, setOperator] = useState('+');
   const [second, setSecond] = useState(0);
   let [total, setTotal] = useState(0);
 
